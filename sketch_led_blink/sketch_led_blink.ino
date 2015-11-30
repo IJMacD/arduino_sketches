@@ -1,0 +1,15 @@
+// the setup routine runs once when you press reset:
+void setup() {                
+  // initialize the digital pin as an output.
+  pinMode(1, OUTPUT); //LED on Model A   
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // digitalWrite(0, HIGH);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(1, HIGH);
+  delay(100);               // wait for a second
+  // digitalWrite(0, LOW);    // turn the LED off by making the voltage LOW
+  digitalWrite(1, LOW); 
+  delay(100);               // wait for a second
+}
