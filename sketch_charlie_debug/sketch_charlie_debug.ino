@@ -23,7 +23,7 @@ void loop() {
 
   unsigned long acc = 1;
   for(int j = 0; j < 16; j++){
-    for(int i = 0; i < 5000; i++){
+    for(int i = 0; i < 500; i++){
       displayValue(acc);
     }
     acc = acc * 2;
@@ -36,6 +36,7 @@ void displayValue(unsigned long val){
     for(int i = 0; i < DISPLAY_WIDTH; i++){
       setPixel(i, j, val & 0x1);
       val = val >> 1;
+      delay(1);
     }
   }
 }
@@ -66,6 +67,6 @@ void setLed(int vin, int gnd, boolean ledStatus)
   digitalWrite(vin, HIGH);
   digitalWrite(gnd, LOW);
 
-  delay(1);
+//  delay(1);
 }
 
