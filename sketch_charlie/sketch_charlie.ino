@@ -1,25 +1,37 @@
+#include <EEPROM.h>
+
 const int PIN_COUNT = 5;
 const int LED_COUNT = PIN_COUNT * (PIN_COUNT - 1);
 
 const int DISPLAY_WIDTH = 4;
 const int DISPLAY_HEIGHT = 4;
 
+const unsigned int TIME_ADDRESS = 0;
+
+unsigned long compensate;
+
 void setup() {
   // put your setup code here, to run once:
+
+  EEPROM.get(TIME_ADDRESS, compensate);
+
+  compensate = compensate - 16;
 }
 
 void loop() {
 
-  static unsigned long compensate = -16;
+  unsigned long time = (millis() / 1000) + compensate;
 
-  unsigned long time = millis() / 1000;
+  displayValue(time);
 
-  time = time  + compensate;
+  EEPROM.put(TIME_ADDRESS, time);
+}
 
-  for(int i = 0; i < DISPLAY_WIDTH; i++){
-    for(int j = 0; j < DISPLAY_HEIGHT; j++){
-      setPixel(i, j, time & 0x1);
-      time = time >> 1;
+void displayValue(unsigned long val){
+  for(int j = 0; j < DISPLAY_HEIGHT; j++){
+    for(int i = 0; i < DISPLAY_WIDTH; i++){
+      setPixel(i, j, val & 0x1);
+      val = val >> 1;
       delay(1);
     }
   }
@@ -28,10 +40,10 @@ void loop() {
 // light a pixel at the given coordinates
 void setPixel(byte x, byte y, boolean ledStatus) {
   if (x >= 0 && x < DISPLAY_WIDTH) {
-    if (y <= x) {
-      x++;
+    if (x <= y) {
+      y++;
     }
-    setLed(x, y, ledStatus);
+    setLed(y, x, ledStatus);
   }
 }
 
