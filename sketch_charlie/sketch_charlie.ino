@@ -24,7 +24,11 @@ void loop() {
 
   displayValue(time);
 
-  EEPROM.put(TIME_ADDRESS, time);
+  // EEPROM only has 100,000 writes so minute resolution
+  // will make it last months rather than days :(
+  if(time % 60 == 0){
+    EEPROM.put(TIME_ADDRESS, time);
+  }
 }
 
 void displayValue(unsigned long val){
