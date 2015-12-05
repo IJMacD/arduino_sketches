@@ -6,6 +6,9 @@ const int LED_COUNT = PIN_COUNT * (PIN_COUNT - 1);
 const int DISPLAY_WIDTH = 4;
 const int DISPLAY_HEIGHT = 4;
 
+// Convert from seconds to binary fractions of a day
+const double TIME_RATIO = 65536.0d / 86400.0d;
+
 const unsigned int TIME_ADDRESS = 0;
 
 unsigned long compensate;
@@ -20,7 +23,7 @@ void setup() {
 
 void loop() {
 
-  unsigned long time = (millis() / 1000) + compensate;
+  unsigned long time = (millis() * TIME_RATIO / 1000) + compensate;
 
   displayValue(time);
 
