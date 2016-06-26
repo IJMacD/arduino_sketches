@@ -1,0 +1,40 @@
+#######################################
+# Syntax Coloring Map For TinySSD1306
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+OLED		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+ssd1306_begin					KEYWORD2
+ssd1306_command					KEYWORD2
+ssd1306_data_start				KEYWORD2
+ssd1306_data					KEYWORD2
+ssd1306_setpos					KEYWORD2
+ssd1306_fill_area    			KEYWORD2
+ssd1306_prop_str_small			KEYWORD2
+ssd1306_str_small				KEYWORD2
+ssd1306_prop_str_big			KEYWORD2
+ssd1306_str_big					KEYWORD2
+ssd1306_draw_bmp				KEYWORD2
+ssd1306_inverted				KEYWORD2
+ssd1306_startscroll				KEYWORD2
+ssd1306_stopscroll				KEYWORD2
+ssd1306_dim						KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+SSD1306_LCDWIDTH		LITERAL1
+SSD1306_LCDHEIGHT		LITERAL1
+LEFT					LITERAL1
+RIGHT					LITERAL1
+LEFT_UP					LITERAL1
+RIGHT_UP				LITERAL1
