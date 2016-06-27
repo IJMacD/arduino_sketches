@@ -1,8 +1,10 @@
 #include <TinyWireM.h>
 
-#include <SI7021.h>
+// ============================================================================
 
-#include <DigisparkOLED.h>
+#include "SI7021.h"
+#include "DigisparkOLED.h"
+
 // ============================================================================
 
 //#include "img0_128x64c1.h"
@@ -17,6 +19,7 @@ SI7021 sensor;
 //int y = 3;
 char temp[5];
 char humid[5];
+char msg[3] = {129,130};
 
 void setup() {
   // put your setup code here, to run once:
@@ -59,6 +62,9 @@ void loop() {
   oled.println(temp);
   oled.print(F("Humidity: "));
   oled.println(humid);
+  oled.print(F("Forecast: "));
+  oled.setFont(FONT16X16);
+  oled.println(msg);
     delay(1000);
 ////  
 //  if((x += 8) >= 128){
