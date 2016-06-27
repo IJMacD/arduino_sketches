@@ -17,25 +17,12 @@
 SI7021 sensor;
 //int x = 40;
 //int y = 3;
-char temp[5];
-char humid[5];
+char temp[5] = {'0','0','.','0','0'};
+char humid[5] = {'0','0','0','%'};
 char msg[3] = {129,130};
 
 void setup() {
   // put your setup code here, to run once:
-
-temp[0] = '0';
-temp[1] = '0';
-temp[2] = '.';
-temp[3] = '0';
-temp[4] = '0';
-
-humid[0] = '0';
-humid[1] = '0';
-humid[2] = '0';
-humid[3] = '%';
-humid[4] = 0;
-
 
   oled.begin();
   sensor.begin();
