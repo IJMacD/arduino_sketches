@@ -20,6 +20,7 @@ SI7021 sensor;
 char temp[5] = {'0','0','.','0','0'};
 char humid[5] = {'0','0','0','%'};
 char msg[3] = {129,130};
+char degC[2] = {131};
 
 void setup() {
   // put your setup code here, to run once:
@@ -46,7 +47,10 @@ void loop() {
   oled.setCursor(0, 0); //top left
   oled.setFont(FONT8X16);
   oled.print(F("Temp: "));
-  oled.println(temp);
+  oled.print(temp);
+  oled.setFont(FONT16X16);
+  oled.println(degC); // °c
+  oled.setFont(FONT8X16);
   oled.print(F("Humidity: "));
   oled.println(humid);
   oled.print(F("Forecast: "));
